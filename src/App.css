@@ -1,0 +1,60 @@
+.pagina-agendamento {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cabecalho h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.conteudo {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.area-calendario {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.painel-lateral {
+  width: 320px;
+  height: 90vh;
+  flex-shrink: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.painel-lateral h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .conteudo {
+    flex-direction: column;
+  }
+  .painel-lateral {
+    width: 100%;
+  }
+}
+
+

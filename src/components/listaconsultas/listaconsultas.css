@@ -1,0 +1,38 @@
+
+/* Lista de consultas */
+.lista-consultas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lista-consultas li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: left;
+}
+
+.lista-consultas li span {
+  display: block;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.lista-consultas li p {
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.lista-vazia {
+  color: var(--text);
+  font-size: 14px;
+}
+
