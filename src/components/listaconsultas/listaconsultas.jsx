@@ -1,10 +1,12 @@
 import './listaconsultas.css'
 
+// Converte "AAAA-MM-DD" para "DD/MM/AAAA", formato mais familiar para o usuário
 function formatarDataBr(data) {
     const [ano, mes, dia] = data.split('-')
     return `${dia}/${mes}/${ano}`
 }
 
+// Lista lateral de consultas confirmadas (Passo 8), ordenadas por data e horário
 export default function ListaConsultas({ agendamentos, onCancelar }) {
     const ordenados = [...agendamentos].sort((a, b) =>
         `${a.data}${a.horario}`.localeCompare(`${b.data}${b.horario}`)
@@ -25,7 +27,9 @@ export default function ListaConsultas({ agendamentos, onCancelar }) {
                     </div>
                     <button
                         type="button"
+                        className="perigo"
                         onClick={() => {
+                            // Passo 8: pede confirmação antes de remover o agendamento
                             if (confirm(`Cancelar a consulta de ${agendamento.paciente}?`)) {
                                 onCancelar(agendamento.id)
                             }

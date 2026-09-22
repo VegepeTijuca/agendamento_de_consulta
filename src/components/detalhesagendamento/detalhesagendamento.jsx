@@ -1,5 +1,7 @@
 import './detalhesagendamento.css'
 
+// Modal de detalhes (Passo 9): abre ao clicar num evento existente do calendário.
+// Não renderiza nada se não houver agendamento selecionado.
 export default function DetalhesAgendamento({ agendamento, onCancelar, onFechar }) {
     if (!agendamento) return null
 
@@ -17,7 +19,9 @@ export default function DetalhesAgendamento({ agendamento, onCancelar, onFechar 
                 <div className="acoes-formulario">
                     <button
                         type="button"
+                        className="perigo"
                         onClick={() => {
+                            // Passo 9: pede confirmação antes de cancelar
                             if (confirm(`Cancelar a consulta de ${agendamento.paciente}?`)) {
                                 onCancelar(agendamento.id)
                                 onFechar()

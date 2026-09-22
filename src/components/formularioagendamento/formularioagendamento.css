@@ -1,8 +1,11 @@
+/* Estilos específicos do formulário de agendamento (Passo 6).
+   Estilos de botão ficam em src/index.css, pois são reutilizados
+   por outros componentes (lista de consultas, modal de detalhes). */
+
 .formulario {
   display: flex;
-  position: absolute;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .formulario label {
@@ -10,42 +13,40 @@
   flex-direction: column;
   gap: 4px;
   font-size: 14px;
+  color: var(--text-h);
   text-align: left;
 }
 
 .formulario input,
 .formulario select,
 .formulario textarea {
-  padding: 8px;
+  padding: 8px 10px;
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 6px;
   font: inherit;
-}
-
-.formulario .erro {
-  color: #d33;
-  font-size: 14px;
-  margin: 0;
-}
-
-.acoes-formulario {
-  display: flex;
-  gap: 8px;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 14px;
-  background: var(--accent);
-  color: white;
-  font: inherit;
-}
-
-button.secundario {
-  background: transparent;
+  background: var(--bg);
   color: var(--text-h);
-  border: 1px solid var(--border);
 }
 
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.formulario textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Mensagem de erro de validação (Passo 6/7) */
+.formulario .erro {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--erro) 12%, transparent);
+  color: var(--erro);
+  font-size: 13px;
+}

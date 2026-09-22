@@ -1,22 +1,43 @@
+/* Estrutura geral da página: cabeçalho + área de calendário + painel lateral */
+
 .pagina-agendamento {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+  gap: 24px;
+  padding: 32px;
   max-width: 1400px;
   margin: 0 auto;
-  box-sizing: border-box;
+  /* leve brilho no canto superior esquerdo, para a página não ficar "chapada" */
+  background-image: radial-gradient(1100px circle at 12% -15%, var(--accent-bg), transparent 55%);
 }
 
 .cabecalho {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 .cabecalho h1 {
   font-size: 24px;
   margin: 0;
+}
+
+.cabecalho .botao-nova-consulta {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.cabecalho .botao-nova-consulta:hover {
+  background: var(--accent-hover);
 }
 
 .conteudo {
@@ -30,31 +51,32 @@
   min-width: 0;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 16px;
+  box-shadow: 0 4px 16px rgba(20, 32, 25, 0.05);
 }
 
 .painel-lateral {
   width: 320px;
-  height: 90vh;
   flex-shrink: 0;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(20, 32, 25, 0.05);
 }
 
 .painel-lateral h2 {
-  margin-top: 0;
+  font-size: 17px;
 }
 
+/* Em telas estreitas o painel lateral desce para baixo do calendário */
 @media (max-width: 900px) {
   .conteudo {
     flex-direction: column;
   }
+
   .painel-lateral {
     width: 100%;
   }
 }
-
-

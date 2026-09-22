@@ -1,3 +1,5 @@
+/* Modal de detalhes do agendamento (Passo 9) */
+
 .modal-fundo {
   position: fixed;
   inset: 0;
@@ -9,10 +11,26 @@
 }
 
 .modal-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   background: var(--bg);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 24px;
   width: 320px;
   max-width: 90%;
   text-align: left;
+}
+
+.modal-conteudo p {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.modal-conteudo p strong {
+  color: var(--text-h);
+}
+
+.modal-conteudo .acoes-formulario {
+  margin-top: 8px;
 }

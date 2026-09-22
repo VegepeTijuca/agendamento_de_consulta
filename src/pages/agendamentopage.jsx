@@ -27,7 +27,11 @@ export default function AgendamentoPage() {
         <div className="pagina-agendamento">
             <header className="cabecalho">
                 <h1>Agendamento de Consultas</h1>
-                <button type="button" onClick={() => { setValoresIniciais({}); setMostrarFormulario(true) }}>
+                <button
+                    type="button"
+                    className="botao-nova-consulta"
+                    onClick={() => { setValoresIniciais({}); setMostrarFormulario(true) }}
+                >
                     + Nova consulta
                 </button>
             </header>

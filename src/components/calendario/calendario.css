@@ -1,0 +1,126 @@
+/* ---------------------------------------------------------------
+   Tema do FullCalendar.
+   A biblioteca já expõe variáveis CSS próprias (--fc-*); em vez de
+   sobrescrever classes internas, ajustamos essas variáveis para usar
+   a paleta do app (definida em src/index.css).
+   --------------------------------------------------------------- */
+.area-calendario {
+  --fc-border-color: var(--border);
+  --fc-page-bg-color: var(--bg);
+  --fc-neutral-bg-color: var(--bg-pagina);
+
+  --fc-button-bg-color: var(--bg);
+  --fc-button-border-color: var(--border);
+  --fc-button-text-color: var(--text-h);
+  --fc-button-hover-bg-color: var(--bg-pagina);
+  --fc-button-hover-border-color: var(--border);
+  --fc-button-active-bg-color: var(--accent);
+  --fc-button-active-border-color: var(--accent);
+
+  --fc-event-bg-color: transparent;
+  --fc-event-border-color: transparent;
+  --fc-event-text-color: var(--text-h);
+
+  --fc-today-bg-color: var(--accent-bg);
+  --fc-now-indicator-color: var(--erro);
+}
+
+/* Botões do cabeçalho (anterior/próximo/hoje/mês/semana/dia) */
+.area-calendario .fc .fc-button {
+  text-transform: capitalize;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.area-calendario .fc .fc-button:focus,
+.area-calendario .fc .fc-button-active:focus {
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
+.area-calendario .fc .fc-button-active {
+  color: #fff;
+}
+
+.area-calendario .fc .fc-toolbar-title {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-h);
+}
+
+/* Agrupa os botões de visão (mês/semana/dia) como um só bloco arredondado */
+.area-calendario .fc .fc-button-group {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Nome dos dias da semana */
+.area-calendario .fc .fc-col-header-cell-cushion {
+  color: var(--text);
+  font-weight: 600;
+  padding: 10px 4px;
+}
+
+/* Célula do dia atual, na visão mensal */
+.area-calendario .fc-day-today .fc-daygrid-day-number {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Feedback visual ao passar o mouse num horário vago */
+.area-calendario .fc-timegrid-slot:hover,
+.area-calendario .fc-daygrid-day:hover {
+  background: var(--bg-pagina);
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------
+   Blocos de consulta agendada: fundo suave + faixa colorida à
+   esquerda (em vez de um retângulo sólido), horário e paciente
+   em linhas separadas para ler melhor de relance.
+   --------------------------------------------------------------- */
+.area-calendario .fc-event {
+  border-radius: 6px;
+  cursor: pointer;
+  transition: filter 0.12s ease;
+}
+
+.area-calendario .fc-timegrid-event .evento-consulta,
+.area-calendario .fc-daygrid-event .evento-consulta {
+  background: var(--accent-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 3px 6px;
+  overflow: hidden;
+}
+
+.evento-consulta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.evento-consulta-horario {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-hover);
+}
+
+.evento-consulta-paciente {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Visão mensal: evento numa linha só (horário e paciente lado a lado) */
+.fc-daygrid-event .evento-consulta {
+  flex-direction: row;
+  gap: 4px;
+}
+
+.area-calendario .fc-event:hover .evento-consulta {
+  filter: brightness(0.97);
+}

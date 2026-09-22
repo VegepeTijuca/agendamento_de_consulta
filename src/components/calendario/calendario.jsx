@@ -3,7 +3,9 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import ptBrLocale from '@fullcalendar/core/locales/pt-br'
 import { temConflito } from '../../utils/validacao'
+import './calendario.css'
 
 // Soma a duração (em minutos) ao horário de início e devolve o instante final em ISO local
 function calcularFim(data, horario, duracao) {
@@ -12,6 +14,19 @@ function calcularFim(data, horario, duracao) {
     return fim.toISOString().slice(0, 19)
 }
 
+// Conteúdo de cada bloco de consulta no calendário: horário numa linha e paciente na outra,
+// em vez do texto padrão do FullCalendar (tudo numa linha só, mais difícil de ler)
+function renderizarEvento(info) {
+    return (
+        <div className="evento-consulta">
+            <span className="evento-consulta-horario">{info.timeText}</span>
+            <span className="evento-consulta-paciente">{info.event.title}</span>
+        </div>
+    )
+}
+
+// Componente de calendário (Passo 4): mostra os agendamentos em visão mensal/semanal/diária,
+// usando a biblioteca FullCalendar, e trata cliques em dias e horários (Passo 5).
 export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, onEventoClick }) {
     const calendarioRef = useRef(null)
 
@@ -52,7 +67,7 @@ export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, o
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay',
             }}
-            locale="pt-br"
+            locale={ptBrLocale}
             firstDay={1}
             slotMinTime="08:00:00"
             slotMaxTime="18:00:00"
@@ -60,6 +75,7 @@ export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, o
             allDaySlot={false}
             height="auto"
             events={eventos}
+            eventContent={renderizarEvento}
             dateClick={aoClicarNaData}
             eventClick={(info) => onEventoClick?.(info.event.id)}
         />

@@ -1,4 +1,4 @@
-// Funções de apoio para validar horários e detectar conflitos de agendamento
+// Funções de apoio para validar horários e detectar conflitos de agendamento (Passos 6 e 7)
 
 export const HORARIO_INICIO_MIN = 8 * 60 // 08:00
 export const HORARIO_FIM_MIN = 18 * 60 // 18:00
@@ -9,6 +9,7 @@ export function paraMinutos(horario) {
     return horas * 60 + minutos
 }
 
+// Validação simples de formato: algo@algo.algo
 export function emailValido(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }

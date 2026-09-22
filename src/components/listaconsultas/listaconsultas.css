@@ -1,5 +1,5 @@
+/* Lista de consultas confirmadas (Passo 8) */
 
-/* Lista de consultas */
 .lista-consultas {
   list-style: none;
   padding: 0;
@@ -16,8 +16,17 @@
   gap: 8px;
   padding: 10px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   text-align: left;
+  transition: border-color 0.15s ease;
+}
+
+.lista-consultas li:hover {
+  border-color: var(--accent);
+}
+
+.lista-consultas li strong {
+  color: var(--text-h);
 }
 
 .lista-consultas li span {
@@ -28,11 +37,18 @@
 
 .lista-consultas li p {
   font-size: 13px;
+  color: var(--text);
   margin: 4px 0 0;
+}
+
+/* Botão "Cancelar" da lista fica menor que o padrão, para não dominar o card */
+.lista-consultas li button {
+  padding: 6px 10px;
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .lista-vazia {
   color: var(--text);
   font-size: 14px;
 }
-

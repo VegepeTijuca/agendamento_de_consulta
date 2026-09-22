@@ -1,53 +1,49 @@
+/* ---------------------------------------------------------------
+   Paleta e variáveis globais do app.
+   Paleta clínica: verde-petróleo como cor principal (transmite calma
+   e saúde), fundo com leve tom esverdeado em vez de cinza neutro.
+   Só ficam aqui as variáveis realmente usadas em algum componente.
+   --------------------------------------------------------------- */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --text: #5c6d66;       /* texto secundário (parágrafos, legendas) */
+  --text-h: #142019;     /* texto de destaque (títulos, valores importantes) */
+  --bg: #fff;            /* fundo dos cartões (calendário, painel, modal) */
+  --bg-pagina: #f4f7f5;  /* fundo geral da página, por trás dos cartões */
+  --border: #dce4e0;     /* bordas e divisórias */
+  --accent: #0e6f63;     /* cor principal (botões, destaque do calendário) */
+  --accent-hover: #0a564d;
+  --accent-bg: rgba(14, 111, 99, 0.09); /* fundo suave (dia atual, foco) */
+  --erro: #b3402f;       /* mensagens de erro e ações destrutivas */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: 'Plus Jakarta Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  font: 16px/145% var(--sans);
   color-scheme: light dark;
   color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  background: var(--bg-pagina);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --text: #9caaa4;
+    --text-h: #e9edeb;
+    --bg: #182019;
+    --bg-pagina: #10140f;
+    --border: #2a332e;
+    --accent: #35c2ae;
+    --accent-hover: #57d6c3;
+    --accent-bg: rgba(53, 194, 174, 0.14);
+    --erro: #e2786a;
   }
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -57,51 +53,67 @@ body {
 #root {
   width: 100%;
   min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
 h1,
 h2 {
-  font-family: var(--heading);
-  font-weight: 500;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-h);
+  margin: 0 0 8px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* ---------------------------------------------------------------
+   Botões usados em todo o app: "Agendar", "Cancelar", "Fechar" etc.
+   Ficam aqui (e não dentro de um componente específico) porque são
+   compartilhados por vários componentes: formulário, lista e modal.
+   --------------------------------------------------------------- */
+button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  transition: background-color 0.15s ease;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+button:hover {
+  background: var(--accent-hover);
+}
+
+/* Botão de ação secundária/neutra (ex.: "Cancelar" um formulário, "Fechar" um modal) */
+button.secundario {
+  background: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+}
+
+button.secundario:hover {
+  background: var(--bg-pagina);
+}
+
+/* Botão de ação destrutiva (cancelar uma consulta) */
+button.perigo {
+  background: transparent;
+  color: var(--erro);
+  border: 1px solid var(--erro);
+}
+
+button.perigo:hover {
+  background: color-mix(in srgb, var(--erro) 10%, transparent);
+}
+
+/* Linha de botões de ação, usada no formulário e no modal de detalhes */
+.acoes-formulario {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
 }

@@ -1,14 +1,10 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { getAgendamentos, saveAgendamentos } from '../utils/storage'
 
-// Hook que guarda os agendamentos em memória e mantém o localStorage sincronizado
+// Hook que guarda os agendamentos em memória e mantém o localStorage sincronizado (Passo 3)
 export function useAgendamentos() {
-    const [agendamentos, setAgendamentos] = useState([])
-
-    // Carrega os dados salvos assim que o app abre
-    useEffect(() => {
-        setAgendamentos(getAgendamentos())
-    }, [])
+    // Lê o localStorage já na primeira renderização, sem precisar de useEffect
+    const [agendamentos, setAgendamentos] = useState(() => getAgendamentos())
 
     const adicionarAgendamento = useCallback((novoAgendamento) => {
         setAgendamentos((atuais) => {
