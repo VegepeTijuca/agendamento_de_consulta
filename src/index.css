@@ -1,9 +1,3 @@
-/* ---------------------------------------------------------------
-   Paleta e variáveis globais do app.
-   Paleta clínica: verde-petróleo como cor principal (transmite calma
-   e saúde), fundo com leve tom esverdeado em vez de cinza neutro.
-   Só ficam aqui as variáveis realmente usadas em algum componente.
-   --------------------------------------------------------------- */
 :root {
   --text: #5c6d66;       /* texto secundário (parágrafos, legendas) */
   --text-h: #142019;     /* texto de destaque (títulos, valores importantes) */

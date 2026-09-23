@@ -1,9 +1,3 @@
-/* ---------------------------------------------------------------
-   Tema do FullCalendar.
-   A biblioteca já expõe variáveis CSS próprias (--fc-*); em vez de
-   sobrescrever classes internas, ajustamos essas variáveis para usar
-   a paleta do app (definida em src/index.css).
-   --------------------------------------------------------------- */
 .area-calendario {
   --fc-border-color: var(--border);
   --fc-page-bg-color: var(--bg);
@@ -74,11 +68,6 @@
   cursor: pointer;
 }
 
-/* ---------------------------------------------------------------
-   Blocos de consulta agendada: fundo suave + faixa colorida à
-   esquerda (em vez de um retângulo sólido), horário e paciente
-   em linhas separadas para ler melhor de relance.
-   --------------------------------------------------------------- */
 .area-calendario .fc-event {
   border-radius: 6px;
   cursor: pointer;

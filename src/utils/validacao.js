@@ -1,5 +1,3 @@
-// Funções de apoio para validar horários e detectar conflitos de agendamento (Passos 6 e 7)
-
 export const HORARIO_INICIO_MIN = 8 * 60 // 08:00
 export const HORARIO_FIM_MIN = 18 * 60 // 18:00
 

@@ -11,7 +11,6 @@ export default function AgendamentoPage() {
 
     const agendamentoSelecionado = agendamentos.find((a) => a.id === idSelecionado)
 
-    // Passo 5: clique em horário vago abre o formulário pré-preenchido
     function abrirFormularioComData(dataStr) {
         const [data, horario] = dataStr.split('T')
         setValoresIniciais({ data, horario: horario ? horario.slice(0, 5) : '' })

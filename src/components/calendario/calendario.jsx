@@ -25,8 +25,6 @@ function renderizarEvento(info) {
     )
 }
 
-// Componente de calendário (Passo 4): mostra os agendamentos em visão mensal/semanal/diária,
-// usando a biblioteca FullCalendar, e trata cliques em dias e horários (Passo 5).
 export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, onEventoClick }) {
     const calendarioRef = useRef(null)
 
@@ -38,13 +36,11 @@ export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, o
     }))
 
     function aoClicarNaData(info) {
-        // Passo 4: clicar num dia na visão mensal leva para a visão do dia
         if (info.view.type === 'dayGridMonth') {
             calendarioRef.current?.getApi().changeView('timeGridDay', info.dateStr)
             return
         }
 
-        // Passo 5: se o horário já estiver ocupado, avisa em vez de abrir o formulário
         const [data, horario] = info.dateStr.split('T')
         const horarioCurto = horario ? horario.slice(0, 5) : ''
         const ocupado = temConflito(agendamentos, { data, horario: horarioCurto, duracao: 30 })

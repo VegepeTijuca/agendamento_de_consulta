@@ -1,5 +1,3 @@
-/* Lista de consultas confirmadas (Passo 8) */
-
 .lista-consultas {
   list-style: none;
   padding: 0;
@@ -41,7 +39,6 @@
   margin: 4px 0 0;
 }
 
-/* Botão "Cancelar" da lista fica menor que o padrão, para não dominar o card */
 .lista-consultas li button {
   padding: 6px 10px;
   font-size: 13px;
