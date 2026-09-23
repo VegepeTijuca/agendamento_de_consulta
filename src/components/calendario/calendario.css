@@ -42,7 +42,7 @@
   color: var(--text-h);
 }
 
-/* Agrupa os botões de visão (mês/semana/dia) como um só bloco arredondado */
+/* Agrupa os botões mês/semana/dia como um só bloco arredondado */
 .area-calendario .fc .fc-button-group {
   border-radius: 8px;
   overflow: hidden;
@@ -104,7 +104,6 @@
   text-overflow: ellipsis;
 }
 
-/* Visão mensal: evento numa linha só (horário e paciente lado a lado) */
 .fc-daygrid-event .evento-consulta {
   flex-direction: row;
   gap: 4px;

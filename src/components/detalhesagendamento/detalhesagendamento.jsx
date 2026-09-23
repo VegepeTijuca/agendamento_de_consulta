@@ -19,10 +19,8 @@ export default function DetalhesAgendamento({ agendamento, onCancelar, onFechar 
                         type="button"
                         className="perigo"
                         onClick={() => {
-                            if (confirm(`Cancelar a consulta de ${agendamento.paciente}?`)) {
-                                onCancelar(agendamento.id)
-                                onFechar()
-                            }
+                            onCancelar(agendamento.id)
+                            onFechar()
                         }}
                     >
                         Cancelar consulta

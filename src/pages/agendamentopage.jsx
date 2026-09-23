@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Calendario, FormularioAgendamento, ListaConsultas, DetalhesAgendamento } from '../components'
+import { Calendario, FormularioAgendamento, ListaConsultas, DetalhesAgendamento, CancelarAgendamento } from '../components'
 import { useAgendamentos } from '../hooks/hooks'
 
 export default function AgendamentoPage() {
@@ -8,8 +8,16 @@ export default function AgendamentoPage() {
     const [mostrarFormulario, setMostrarFormulario] = useState(false)
     const [valoresIniciais, setValoresIniciais] = useState({})
     const [idSelecionado, setIdSelecionado] = useState(null)
+    const [idParaCancelar, setIdParaCancelar] = useState(null)
 
     const agendamentoSelecionado = agendamentos.find((a) => a.id === idSelecionado)
+    const agendamentoParaCancelar = agendamentos.find((a) => a.id === idParaCancelar)
+
+    function confirmarCancelamento(id) {
+        removerAgendamento(id)
+        // Se o agendamento cancelado estava aberto nos detalhes, fecha também
+        setIdSelecionado((atual) => (atual === id ? null : atual))
+    }
 
     function abrirFormularioComData(dataStr) {
         const [data, horario] = dataStr.split('T')
@@ -56,7 +64,7 @@ export default function AgendamentoPage() {
                     ) : (
                         <>
                             <h2>Próximas consultas</h2>
-                            <ListaConsultas agendamentos={agendamentos} onCancelar={removerAgendamento} />
+                            <ListaConsultas agendamentos={agendamentos} onCancelar={setIdParaCancelar} />
                         </>
                     )}
                 </aside>
@@ -64,8 +72,14 @@ export default function AgendamentoPage() {
 
             <DetalhesAgendamento
                 agendamento={agendamentoSelecionado}
-                onCancelar={removerAgendamento}
+                onCancelar={setIdParaCancelar}
                 onFechar={() => setIdSelecionado(null)}
+            />
+
+            <CancelarAgendamento
+                agendamento={agendamentoParaCancelar}
+                onConfirmar={confirmarCancelamento}
+                onFechar={() => setIdParaCancelar(null)}
             />
         </div>
     )

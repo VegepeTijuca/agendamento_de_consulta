@@ -1,6 +1,6 @@
 import './listaconsultas.css'
 
-// Converte "AAAA-MM-DD" para "DD/MM/AAAA", mais familiar
+// Converte "AAAA-MM-DD" para "DD-MM-AAAA", mais familiar
 function formatarDataBr(data) {
     const [ano, mes, dia] = data.split('-')
     return `${dia}/${mes}/${ano}`
@@ -27,11 +27,7 @@ export default function ListaConsultas({ agendamentos, onCancelar }) {
                     <button
                         type="button"
                         className="perigo"
-                        onClick={() => {
-                            if (confirm(`Cancelar a consulta de ${agendamento.paciente}?`)) {
-                                onCancelar(agendamento.id)
-                            }
-                        }}
+                        onClick={() => onCancelar(agendamento.id)}
                     >
                         Cancelar
                     </button>

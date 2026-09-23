@@ -7,7 +7,6 @@ const CAMPOS_VAZIOS = { paciente: '', email: '', data: '', horario: '', duracao:
 
 export default function FormularioAgendamento({ agendamentos, valoresIniciais, onSalvar, onCancelar }) {
     // Começa com os valores em branco, sobrescritos pelos valoresIniciais
-    // (ex.: data/horário já preenchidos ao clicar num horário vago do calendário)
     const [formulario, setFormulario] = useState({ ...CAMPOS_VAZIOS, ...valoresIniciais })
     const [erro, setErro] = useState('')
 

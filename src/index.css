@@ -42,6 +42,11 @@
 
 body {
   margin: 0;
+  min-height: 100svh;
+  background-color: var(--bg-pagina);
+  background-image: radial-gradient(1600px circle at 15% -10%, var(--accent-bg), transparent 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #root {

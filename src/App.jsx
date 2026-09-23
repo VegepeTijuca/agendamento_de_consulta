@@ -1,8 +1,14 @@
+import { Navbar } from './components'
 import AgendamentoPage from './pages/agendamentopage'
 import './App.css'
 
 function App() {
-    return <AgendamentoPage />
+    return (
+        <>
+            <Navbar />
+            <AgendamentoPage />
+        </>
+    )
 }
 
 export default App

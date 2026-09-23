@@ -1,0 +1,89 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 32px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(20, 32, 25, 0.04);
+}
+
+.navbar-marca {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.navbar-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar-links a:hover {
+  background: var(--bg-pagina);
+  color: var(--text-h);
+}
+
+.navbar-links a.ativo {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.navbar-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.navbar-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.navbar-usuario-nome {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+@media (max-width: 700px) {
+  .navbar-links,
+  .navbar-usuario-nome {
+    display: none;
+  }
+
+  .navbar {
+    justify-content: space-between;
+  }
+}

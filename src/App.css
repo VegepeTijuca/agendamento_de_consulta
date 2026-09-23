@@ -5,7 +5,6 @@
   padding: 32px;
   max-width: 1400px;
   margin: 0 auto;
-  background-image: radial-gradient(1100px circle at 12% -15%, var(--accent-bg), transparent 55%);
 }
 
 .cabecalho {

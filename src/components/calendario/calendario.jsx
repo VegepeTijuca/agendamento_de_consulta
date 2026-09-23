@@ -15,7 +15,6 @@ function calcularFim(data, horario, duracao) {
 }
 
 // Conteúdo de cada bloco de consulta no calendário: horário numa linha e paciente na outra,
-// em vez do texto padrão do FullCalendar (tudo numa linha só, mais difícil de ler)
 function renderizarEvento(info) {
     return (
         <div className="evento-consulta">
