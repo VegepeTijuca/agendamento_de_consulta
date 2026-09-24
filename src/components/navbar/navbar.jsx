@@ -32,7 +32,7 @@ export default function Navbar() {
 
             <div className="navbar-usuario">
                 <span className="navbar-avatar">VR</span>
-                <span className="navbar-usuario-nome">Dr. Vitor Regisson</span>
+                <span className="navbar-usuario-nome">Vitor Regisson</span>
             </div>
         </nav>
     )
