@@ -83,6 +83,13 @@
   overflow: hidden;
 }
 
+/* Faz o conteúdo preencher toda a duração reservada pelo FullCalendar */
+.area-calendario .fc-timegrid-event .evento-consulta {
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
 .evento-consulta {
   display: flex;
   flex-direction: column;

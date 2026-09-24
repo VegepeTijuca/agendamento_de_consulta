@@ -14,7 +14,7 @@ function calcularFim(data, horario, duracao) {
     return fim.toISOString().slice(0, 19)
 }
 
-// Conteúdo de cada bloco de consulta no calendário: horário numa linha e paciente na outra,
+// Conteúdo de cada bloco de consulta no calendário
 function renderizarEvento(info) {
     return (
         <div className="evento-consulta">
@@ -25,6 +25,7 @@ function renderizarEvento(info) {
 }
 
 export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, onEventoClick }) {
+    // pra pegar dados da API do calendário
     const calendarioRef = useRef(null)
 
     const eventos = agendamentos.map((agendamento) => ({
@@ -69,6 +70,8 @@ export default function Calendario({ agendamentos, onSlotClick, onSlotOcupado, o
             slotDuration="00:30:00"
             allDaySlot={false}
             height="auto"
+            selectable={true}
+            unselectAuto={false}
             events={eventos}
             eventContent={renderizarEvento}
             dateClick={aoClicarNaData}

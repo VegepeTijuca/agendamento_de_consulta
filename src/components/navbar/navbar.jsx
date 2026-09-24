@@ -1,7 +1,6 @@
 import logo from '../../assets/logo-clinica.png'
 import './navbar.css'
 
-// Nav fake
 const LINKS = [
     { label: 'Agenda', ativo: true },
     { label: 'Pacientes', ativo: false },

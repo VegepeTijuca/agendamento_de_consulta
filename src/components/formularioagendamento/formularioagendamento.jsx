@@ -1,14 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { emailValido, horarioValido, temConflito } from '../../utils/validacao'
 import './formularioagendamento.css'
 
-// Valores em branco usados tanto para abrir um formulário novo quanto para limpá-lo após salvar
+// Valores em branco usados tanto para abrir um formulário novo quanto pra limpar depois de salvar
 const CAMPOS_VAZIOS = { paciente: '', email: '', data: '', horario: '', duracao: '30', observacao: '' }
 
 export default function FormularioAgendamento({ agendamentos, valoresIniciais, onSalvar, onCancelar }) {
     // Começa com os valores em branco, sobrescritos pelos valoresIniciais
     const [formulario, setFormulario] = useState({ ...CAMPOS_VAZIOS, ...valoresIniciais })
     const [erro, setErro] = useState('')
+
+    // Atualiza data e horário quando outra célula é selecionada com o formulário aberto
+    useEffect(() => {
+        setFormulario((atual) => ({
+            ...atual,
+            data: valoresIniciais?.data ?? atual.data,
+            horario: valoresIniciais?.horario ?? atual.horario,
+        }))
+        setErro('')
+    }, [valoresIniciais])
 
     function alterarCampo(evento) {
         setFormulario({ ...formulario, [evento.target.name]: evento.target.value })
@@ -62,7 +72,8 @@ export default function FormularioAgendamento({ agendamentos, valoresIniciais, o
             </label>
             <label>
                 Horário
-                <input type="time" name="horario" step="1800" value={formulario.horario} onChange={alterarCampo} required />
+                <input type="time" name="horario" step="1800" min="08:00" max="18:00" value={formulario.horario} onChange={alterarCampo} required aria-describedby="instrucao-horario" />
+                <small id="instrucao-horario">Escolha um horário entre 08:00 e 18:00, em intervalos de 30 minutos.</small>
             </label>
             <label>
                 Duração
