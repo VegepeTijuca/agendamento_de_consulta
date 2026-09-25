@@ -12,11 +12,20 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   padding: 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
   text-align: left;
   transition: border-color 0.15s ease;
+}
+
+.lista-consultas li > * {
+  min-width: 0;
+}
+
+.lista-consultas li p {
+  overflow-wrap: anywhere;
 }
 
 .lista-consultas li:hover {

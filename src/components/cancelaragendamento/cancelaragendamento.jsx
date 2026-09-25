@@ -1,15 +1,17 @@
 import './cancelaragendamento.css'
 
-// Converte "AAAA-MM-DD" para "DD/MM/AAAA", mais familiar
+// Converte a data para o formato usado no Brasil.
 function formatarDataBr(data) {
     const [ano, mes, dia] = data.split('-')
     return `${dia}/${mes}/${ano}`
 }
 
 export default function CancelarAgendamento({ agendamento, onConfirmar, onFechar }) {
+    // Não renderiza o modal quando não há agendamento selecionado.
     if (!agendamento) return null
 
     return (
+        // Clicar no fundo fecha o modal.
         <div className="modal-fundo" onClick={onFechar}>
             <div className="modal-conteudo" onClick={(e) => e.stopPropagation()}>
                 <h2>Cancelar consulta</h2>
@@ -26,6 +28,7 @@ export default function CancelarAgendamento({ agendamento, onConfirmar, onFechar
                         type="button"
                         className="perigo"
                         onClick={() => {
+                            // Confirma o cancelamento e fecha o modal.
                             onConfirmar(agendamento.id)
                             onFechar()
                         }}

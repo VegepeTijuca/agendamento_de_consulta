@@ -4,3 +4,5 @@ export { default as FormularioAgendamento } from './formularioagendamento/formul
 export { default as ListaConsultas } from './listaconsultas/listaconsultas'
 export { default as DetalhesAgendamento } from './detalhesagendamento/detalhesagendamento'
 export { default as CancelarAgendamento } from './cancelaragendamento/cancelaragendamento'
+export { default as AgendamentoInvalido}
+ from './agendamentoinvalido/agendamentoinvalido'

@@ -1,0 +1,67 @@
+[role='alertdialog'] {
+  box-sizing: border-box;
+  position: fixed;
+  right: 16px;
+  bottom: 32px;
+  z-index: 9999;
+  width: min(90vw, 360px);
+  max-height: min(80vh, 480px);
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid var(--border, #dce4e0);
+  border-radius: 12px;
+  background: var(--bg, #fff);
+  color: var(--text, #5c6d66);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  [role='alertdialog'] {
+    right: 12px;
+    bottom: 32px;
+    width: calc(100vw - 24px);
+  }
+}
+
+[role='alertdialog'] h2 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--text-h, #142019);
+}
+
+[role='alertdialog'] p {
+  color: var(--text);
+}
+
+[role='alertdialog'] button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent, #0e6f63);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+[role='alertdialog'] button:hover {
+  background: var(--accent-hover, #0a564d);
+}
+
+[role='alertdialog'] button:focus-visible {
+  outline: 3px solid var(--accent-bg, rgba(14, 111, 99, 0.09));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [role='alertdialog'] button {
+    transition: none;
+  }
+}

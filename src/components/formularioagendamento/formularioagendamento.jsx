@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react'
 import { emailValido, horarioValido, temConflito } from '../../utils/validacao'
 import './formularioagendamento.css'
 
-// Valores em branco usados tanto para abrir um formulário novo quanto pra limpar depois de salvar
+// Estado inicial usado ao abrir e ao limpar o formulário.
 const CAMPOS_VAZIOS = { paciente: '', email: '', data: '', horario: '', duracao: '30', observacao: '' }
 
 export default function FormularioAgendamento({ agendamentos, valoresIniciais, onSalvar, onCancelar }) {
-    // Começa com os valores em branco, sobrescritos pelos valoresIniciais
+    // Preenche o formulário com valores padrão ou com os dados recebidos.
     const [formulario, setFormulario] = useState({ ...CAMPOS_VAZIOS, ...valoresIniciais })
     const [erro, setErro] = useState('')
 
-    // Atualiza data e horário quando outra célula é selecionada com o formulário aberto
+    // Atualiza data e horário quando outra célula da agenda é selecionada.
     useEffect(() => {
         setFormulario((atual) => ({
             ...atual,
@@ -22,12 +22,13 @@ export default function FormularioAgendamento({ agendamentos, valoresIniciais, o
 
     function alterarCampo(evento) {
         setFormulario({ ...formulario, [evento.target.name]: evento.target.value })
-        setErro('') // limpa o erro anterior assim que o usuário volta a digitar
+        setErro('') // Remove o erro assim que o usuário altera um campo.
     }
 
     function salvar(evento) {
         evento.preventDefault()
 
+        // Valida os campos obrigatórios antes de continuar.
         if (!formulario.paciente.trim() || !formulario.email.trim() || !formulario.data || !formulario.horario) {
             setErro('Preencha todos os campos obrigatórios.')
             return
@@ -43,7 +44,10 @@ export default function FormularioAgendamento({ agendamentos, valoresIniciais, o
             return
         }
 
+        // Converte a duração para número e gera um identificador único.
         const novoAgendamento = { ...formulario, id: crypto.randomUUID(), duracao: Number(formulario.duracao) }
+
+        // Impede dois agendamentos no mesmo horário.
         if (temConflito(agendamentos, novoAgendamento)) {
             setErro('Já existe um agendamento nesse horário.')
             return

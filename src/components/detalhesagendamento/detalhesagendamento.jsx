@@ -1,9 +1,11 @@
 import './detalhesagendamento.css'
 
 export default function DetalhesAgendamento({ agendamento, onCancelar, onFechar }) {
+    // Não renderiza o modal quando não há agendamento selecionado.
     if (!agendamento) return null
 
     return (
+        // Clicar no fundo fecha o modal; o conteúdo impede esse evento de propagar.
         <div className="modal-fundo" onClick={onFechar}>
             <div className="modal-conteudo" onClick={(e) => e.stopPropagation()}>
                 <h2>Detalhes do agendamento</h2>
@@ -19,6 +21,7 @@ export default function DetalhesAgendamento({ agendamento, onCancelar, onFechar 
                         type="button"
                         className="perigo"
                         onClick={() => {
+                            // Cancela o agendamento e fecha o modal em seguida.
                             onCancelar(agendamento.id)
                             onFechar()
                         }}
